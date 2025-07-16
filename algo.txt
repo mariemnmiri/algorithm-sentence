@@ -1,0 +1,27 @@
+algorithme:select processing,iterative processing
+algo_sentence
+var 
+ch:string
+i,j,k:integer
+nbl,nbw,nbv:integer
+begin
+while (position(" ",ch))=0 and (ch[length]-1)!=0 do
+write("give me another phrase")
+read(ch)
+endwhile
+for i from 1 to postion(".",ch) do 
+nbl=+1
+endfor
+write("the length of ch =",nbl)
+for j from 1 to length(ch) do 
+if ch[i]=position(" ",ch) then 
+nbw=+1
+ch=clean(ch,0,position(" ",ch))
+endif
+write("the number of words in ch =",nbw)
+for k from 1 to length(ch) do 
+if toupper(ch[k]) in in[O,I,Y,A,E,U] do 
+nbv=+1
+endif 
+endfor
+write("the number of vowels in ch =",nbv)
