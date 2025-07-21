@@ -1,27 +1,41 @@
-algorithme:select processing,iterative processing
-algo_sentence
-var 
-ch:string
-i,j,k:integer
-nbl,nbw,nbv:integer
-begin
-while (position(" ",ch))=0 and (ch[length]-1)!=0 do
-write("give me another phrase")
-read(ch)
-endwhile
-for i from 1 to postion(".",ch) do 
-nbl=+1
-endfor
-write("the length of ch =",nbl)
-for j from 1 to length(ch) do 
-if ch[i]=position(" ",ch) then 
-nbw=+1
-ch=clean(ch,0,position(" ",ch))
-endif
-write("the number of words in ch =",nbw)
-for k from 1 to length(ch) do 
-if toupper(ch[k]) in in[O,I,Y,A,E,U] do 
-nbv=+1
-endif 
-endfor
-write("the number of vowels in ch =",nbv)
+Algorithm algo_sentence
+Var
+    ch : string
+    i, j, k : integer
+    lengthCount, wordCount, vowelCount : integer
+Begin
+    lengthCount ← 0    // length of the sentence
+    wordCount ← 0      // number of words
+    vowelCount ← 0     // number of vowels
+
+    // Read a valid sentence that contains at least one space and ends with a dot
+    Repeat
+        Write("Enter a sentence ending with a dot and containing at least one space:")
+        Read(ch)
+    Until (Position(" ", ch) > 0) AND (ch[Length(ch)] = '.')
+
+    // Calculate length
+    lengthCount ← Length(ch)
+
+    Write("Length of the sentence is: ", lengthCount)
+
+    // Calculate number of words
+    wordCount ← 1
+    For j from 1 to lengthCount Do
+        If ch[j] = ' ' Then
+            wordCount ← wordCount + 1
+        EndIf
+    EndFor
+
+    Write("Number of words is: ", wordCount)
+
+    // Calculate number of vowels
+    For k from 1 to lengthCount Do
+        If ch[k] = 'a' Or ch[k] = 'e' Or ch[k] = 'i' Or ch[k] = 'o' Or ch[k] = 'u' Or ch[k] = 'y'
+           Or ch[k] = 'A' Or ch[k] = 'E' Or ch[k] = 'I' Or ch[k] = 'O' Or ch[k] = 'U' Or ch[k] = 'Y' Then
+            vowelCount ← vowelCount + 1
+        EndIf
+    EndFor
+
+    Write("Number of vowels is: ", vowelCount)
+End
